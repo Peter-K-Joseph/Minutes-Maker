@@ -1,0 +1,649 @@
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY (DO NOTE THAT. I HONESTLY DONT REMEMBER WHAT I CODED AND WHAT CAN BREAK), WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+   
+   Copyright (c) 2020 by Peter K Joseph (nuvi.dynu.net)
+   Online Copy Available at http://capskengeri.epizy.com/?i=1
+      >Permission is granted free of charge to use this website. Although, no further updates will be given to the site after 28/08/2020
+   -->
+<!--
+   Interface -> Complete
+   Value Assignment -> Complete
+   Value Input -> Complete
+   Value Change -> Complete
+   Text Input data Save -> Complete
+   Text download -> Complete
+   Finishing Touches -> Pending
+   
+   
+   -->
+<!DOCTYPE html>
+<html lang="en" >
+   <head>
+      <meta charset="UTF-8">
+      <title>M O M</title>
+      <link rel="stylesheet" href="./style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+      <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.js"></script>    <!--External Script for Pop Up-->
+      <style>
+         @import url(https://fonts.googleapis.com/css?family=Montserrat);
+         .outerbg {
+         width: 100%;
+         max-width: 800px;
+         margin: 20px;
+         padding: 30px 0;
+         margin: 0 auto;
+         background: url('https://s24.postimg.org/63armx1h1/sahil_sahil_chatsbg.png');
+         background-repeat: no-repeat;
+         background-size: 100% 100%;
+         }
+         .chatboxout {
+         font-family: open sans;
+         font-size: 12px;
+         line-height: 17px;
+         box-sizing: border-box;
+         max-width: 400px;
+         margin: 0 auto;
+         padding: 10px;
+         background: #fff;
+         border-radius: 5px;
+         -webkit-box-shadow: 4px 4px 20px -1px rgba(59, 59, 59, 0.6);
+         -moz-box-shadow: 4px 4px 20px -1px rgba(59, 59, 59, 0.6);
+         box-shadow: 4px 4px 20px -1px rgba(59, 59, 59, 0.6);
+         }
+         .chatboxin {
+         box-sizing: border-box;
+         border: 1px solid rgba(208, 208, 208, 1);
+         border-radius: 5px;
+         padding: 5px 15px;
+         }
+         .chat-sender.msg {
+         -webkit-clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 12px 70%);
+         clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 12px 70%);
+         padding: 9px 9px;
+         padding-left: 21px;
+         background-color: #5D5D5D;
+         color: #fff;
+         box-sizing: border-box;
+         width: calc(100% - 53px);
+         margin-left: -9px;
+         }
+         .chatmsg {
+         margin-top: 5px;
+         }
+         .chat-sender {
+         display: inline-block;
+         vertical-align: top;
+         }
+         .chat-container {
+         margin-top: 15px;
+         margin-bottom: 15px;
+         animation: fadein 2s;
+         -moz-animation: fadein 2s; /* Firefox */
+         -webkit-animation: fadein 2s; /* Safari and Chrome */
+         -o-animation: fadein 2s; /* Opera */
+         }
+         .flippd {
+         width: 100%;
+         transform: scale(-1, 1);
+         -moz-transform: scale(-1, 1);
+         -webkit-transform: scale(-1, 1);
+         -o-transform: scale(-1, 1);
+         -ms-transform: scale(-1, 1);
+         }
+         .text-input {
+         position: relative;
+         margin-top: 50px;
+         }
+         .text-input input[type="text"] {
+         display: inline-block;
+         width: 500px;
+         height: 40px;
+         box-sizing: border-box;
+         outline: none;
+         border: 1px solid lightgray;
+         border-radius: 3px;
+         padding: 10px 10px 10px 110px;
+         -webkit-transition: all 0.1s ease-out;
+         transition: all 0.1s ease-out;
+         }
+         .text-input input[type="text"] + label {
+         position: absolute;
+         top: 0;
+         left: 0;
+         bottom: 0;
+         height: 40px;
+         line-height: 40px;
+         color: white;
+         border-radius: 3px 0 0 3px;
+         padding: 0 20px;
+         background: #E03616;
+         -webkit-transform: translateZ(0) translateX(0);
+         transform: translateZ(0) translateX(0);
+         -webkit-transition: all 0.3s ease-in;
+         transition: all 0.3s ease-in;
+         -webkit-transition-delay: 0.2s;
+         transition-delay: 0.2s;
+         }
+         .text-input input[type="text"]:focus + label {
+         -webkit-transform: translateY(-120%) translateX(0%);
+         transform: translateY(-120%) translateX(0%);
+         border-radius: 3px;
+         -webkit-transition: all 0.1s ease-out;
+         transition: all 0.1s ease-out;
+         }
+         .text-input input[type="text"]:focus {
+         padding: 10px;
+         -webkit-transition: all 0.3s ease-out;
+         transition: all 0.3s ease-out;
+         -webkit-transition-delay: 0.2s;
+         transition-delay: 0.2s;
+         }
+         .chat-respond.msg {
+         -webkit-clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 12px 70%);
+         clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 12px 70%);
+         padding: 9px 9px;
+         padding-left: 21px;
+         background-color: #E6E6E6;
+         color: #333;
+         box-sizing: border-box;
+         width: calc(100% - 53px);
+         margin-right: -9px;
+         transform: scale(-1, 1);
+         -moz-transform: scale(-1, 1);
+         -webkit-transform: scale(-1, 1);
+         -o-transform: scale(-1, 1);
+         -ms-transform: scale(-1, 1);
+         }
+         .chat-respond.msg strong {
+         color: #F48806;
+         }
+         .chat-respond {
+         display: inline-block;
+         vertical-align: top;
+         }
+         .flippd {
+         width: 100%;
+         transform: scale(-1, 1);
+         -moz-transform: scale(-1, 1);
+         -webkit-transform: scale(-1, 1);
+         -o-transform: scale(-1, 1);
+         -ms-transform: scale(-1, 1);
+         }
+         @keyframes fadein {
+         from {
+         opacity: 0;
+         -webkit-transform: translate3d(0, 100%, 0);
+         transform: translate3d(0, 100%, 0);
+         }
+         to {
+         opacity: 1;
+         -webkit-transform: none;
+         transform: none;
+         }
+         }
+         #overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: #000;
+         filter:alpha(opacity=70);
+         -moz-opacity:0.7;
+         -khtml-opacity: 0.7;
+         opacity: 0.7;
+         z-index: 100;
+         display: none;
+         }
+         .cnt223 a{
+         text-decoration: none;
+         }
+         .popup{
+         width: 100%;
+         margin: 0 auto;
+         display: none;
+         position: fixed;
+         z-index: 101;
+         }
+         .popup2{
+         width: 100%;
+         margin: 0 auto;
+         display: none;
+         position: fixed;
+         z-index: 101;
+         }
+         .cnt223{
+         min-width: 600px;
+         width: 600px;
+         min-height: 150px;
+         margin: 100px auto;
+         background: #f3f3f3;
+         position: relative;
+         z-index: 103;
+         padding: 15px 35px;
+         border-radius: 5px;
+         box-shadow: 0 2px 5px #000;
+         }
+         .cnt223 p{
+         clear: both;
+         color: #555555;
+         /* text-align: justify; */
+         font-size: 20px;
+         font-family: sans-serif;
+         }
+         .cnt223 p a{
+         color: #d91900;
+         font-weight: bold;
+         }
+         .cnt223 .x{
+         float: right;
+         height: 35px;
+         left: 22px;
+         position: relative;
+         top: -25px;
+         width: 34px;
+         }
+         .cnt223 .x:hover{
+         cursor: pointer;
+         }
+         input.textarea {
+         position: fixed;
+         bottom: 0px;
+         left: 20%;
+         right: 0px;
+         width: 60%;
+         height: 50px;
+         z-index: 99;
+         background: black;
+         border: none;
+         outline: none;
+         padding-left: 55px;
+         padding-right: 55px;
+         color: whitesmoke;
+         font-weight: 400;
+         }
+         input.button {
+         position: absolute;
+         text-align: center;
+         bottom: 0px;
+         left: 80%;
+         right: 0px;
+         width: 20%;
+         height: 55px;
+         z-index: 99;
+         background: rgb(255, 79, 79);
+         border: none;
+         outline: thin;
+         padding-left: 55px;
+         padding-right: 55px;
+         color: whitesmoke;
+         font-weight: 400;
+         }
+         input.button2 {
+         position: absolute;
+         text-align: center;
+         bottom: 0px;
+         left: 0%;
+         right: 0px;
+         width: 20%;
+         height: 55px;
+         z-index: 99;
+         background: grey;
+         border: none;
+         outline: thin;
+         padding-left: 55px;
+         padding-right: 55px;
+         color: whitesmoke;
+         font-weight: 400;
+         }
+        div.custom-select {
+         text-align: center;
+         bottom: 0px;
+         left: 0%;
+         right: 0px;
+         width: 100%;
+         height: 23px;
+         z-index: 99;
+         background: grey;
+         border: none;
+         outline: thin;
+         padding-left: 55px;
+         padding-right: 55px;
+         color: whitesmoke;
+         font-weight: 400;
+         }
+         .menu {
+         position: fixed;
+         top: 0px;
+         left: 0px;
+         right: 0px;
+         width: 100%;
+         height: 50px;
+         background: rgba(82,179,217,0.9);
+         z-index: 100;
+         -webkit-touch-callout: none;
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         }
+         .name{
+         position: absolute;
+         top: 7px;
+         left: 110px;
+         font-family: 'Lato';
+         font-size: 25px;
+         font-weight: 300;
+         color: rgba(255,255,255,0.98);
+         cursor: default;
+         }
+         @-moz-keyframes fadein { /* Firefox */
+         from {
+         opacity: 0;
+         -webkit-transform: translate3d(0, 100%, 0);
+         transform: translate3d(0, 100%, 0);
+         }
+         to {
+         opacity: 1;
+         -webkit-transform: none;
+         transform: none;
+         }
+         }
+         @-webkit-keyframes fadein { /* Safari and Chrome */
+         from {
+         opacity: 0;
+         -webkit-transform: translate3d(0, 100%, 0);
+         transform: translate3d(0, 100%, 0);
+         }
+         to {
+         opacity: 1;
+         -webkit-transform: none;
+         transform: none;
+         }
+         }
+         @-o-keyframes fadein { /* Opera */
+         from {
+         opacity: 0;
+         -webkit-transform: translate3d(0, 100%, 0);
+         transform: translate3d(0, 100%, 0);
+         }
+         to {
+         opacity: 1;
+         -webkit-transform: none;
+         transform: none;
+         }
+         }
+      </style>
+      <script type='text/javascript'>
+         alert("Due to a bug in the code, Pressing Enter results in page getting refreshed. Please make sure yoou click the Note It! button to submit");
+         
+         var filesave = "M O M Data | Text Record Started! | ";
+         
+         //Responisible for storing names of the participants and printing it on first chat (Variable Initialisation and value assignment)
+                  function inputcnf() {                                 
+                    var a = document.part_info_input.mem1.value;
+                    var b = document.part_info_input.mem2.value;
+                    var c = document.part_info_input.mem3.value;
+                    var d = document.part_info_input.mem4.value;
+                    var e = document.part_info_input.mem5.value;
+                    document.getElementById("first").innerHTML = a;
+                    document.getElementById("data1").innerHTML = b;
+                    document.getElementById("data2").innerHTML = c;
+                    document.getElementById("data3").innerHTML = d;
+                    document.getElementById("data4").innerHTML = e;
+                    document.getElementById("name").innerHTML = "In this meeting... " + a;
+                    document.getElementById("nameselect1").innerHTML = b;
+                    document.getElementById("nameselect2").innerHTML = c;
+                    document.getElementById("nameselect3").innerHTML = d;
+                    document.getElementById("nameselect4").innerHTML = e;
+                    document.getElementById("nameselect1").value = b;
+                    document.getElementById("nameselect2").value = c;
+                    document.getElementById("nameselect3").value = d;
+                    document.getElementById("nameselect4").value = e;
+                    filesave = filesave + "Topics of Discussion: " + document.part_info_input.mem1.value + " | Patricipants: " + document.part_info_input.mem2.value + ", " + document.part_info_input.mem3.value + ", " + document.part_info_input.mem4.value + ", " + document.part_info_input.mem5.value + "<br>";
+                  }
+                  
+          //Command Responsible for updating Filesave variable that hey, the input text has been entered by this guy.
+                  function update_file_data(){
+                     alert("Works");
+                   document.write(filesave);
+                  }
+         
+         
+         //Counter so that texts go at appropriate places//
+                  var init = 0;                                                        
+                  var count = 1;
+                  function runmss(){
+                   if (init == 0){
+                   document.getElementById("chatme").innerHTML = document.submitter.message.value;
+                   document.getElementById("name_preview_1").innerHTML = document.getElementById("input2").value;
+                   init = init + 1;
+                   document.getElementById("valueadd1").innerHTML = "Note " + count;
+                   count = count + 1;
+                   }
+                   else if(init == 1){
+                   document.getElementById("chatme2").innerHTML = document.submitter.message.value;
+                   init = init + 1;
+                   document.getElementById("name_preview_2").innerHTML = document.getElementById("input2").value;
+                   document.getElementById("valueadd2").innerHTML = "Note " + count;
+                   count = count + 1;
+                   }
+                   else if(init == 2){
+                   document.getElementById("chatme3").innerHTML = document.submitter.message.value;
+                   init = init + 1;
+                   document.getElementById("name_preview_3").innerHTML = document.getElementById("input2").value;
+                   document.getElementById("valueadd3").innerHTML = "Note " + count;
+                   count = count + 1;
+                   }
+                   else {
+                   document.getElementById("chatme4").innerHTML = document.submitter.message.value;
+                   init = 0;
+                   document.getElementById("name_preview_4").innerHTML = document.getElementById("input2").value;
+                   document.getElementById("valueadd4").innerHTML = "Note " + count;
+                   count = count + 1;
+                   }
+                   filesave = filesave + "<br>" + document.getElementById("input2").value + ": " + document.submitter.message.value;
+         
+                }
+         
+         //Code responsible for hiding the popup (but debugging). Don't change anything here. I do something it never runs. 
+                  $(function(){              
+                  var overlay = $('<div id="overlay"></div>');
+                  overlay.show();
+                  overlay.appendTo(document.body);
+                  $('.popup').show();
+                  $('.popup2').show();
+                  
+                  $('.close').click(function(){
+                  $('.popup').hide();
+                  overlay.appendTo(document.body).remove();
+                  return false;
+                  });
+                  
+                  $('.close2').click(function(){
+                  $('.popup2').hide();
+                  overlay.appendTo(document.body).remove();
+                  return false;
+                  });
+                   
+                  
+                  $('.x').click(function(){
+                  $('.popup').hide();
+                  overlay.appendTo(document.body).remove();
+                  return false;
+                  });
+                  });
+         //Function to save contents to a variable
+                  
+         function download(data, filename, type) {
+         var file = new Blob([data], {type: type});
+         if (window.navigator.msSaveOrOpenBlob)
+         window.navigator.msSaveOrOpenBlob(file, filename);
+         else {
+         var a = document.createElement("a"),
+         url = URL.createObjectURL(file);
+         a.href = url;
+         a.download = filename;
+         document.body.appendChild(a);
+         a.click();
+         setTimeout(function() {
+             document.body.removeChild(a);
+             window.URL.revokeObjectURL(url);  
+         }, 0); 
+         }
+         }
+      </script>
+   </head>
+   <body>
+      <div class="menu">
+         <b>
+            <div class="name" id="name"></div>
+      </div>
+      </b>
+      <div class='popup2'>
+         <!--Outputs Participant Info-->
+         <div class='cnt223'>
+            <center>
+               <h1>Participant Information</h1>
+               <p>
+                  Topics Covered in this meeting... 
+               <p id="first"></p>
+               Participant 1: 
+               <p id="data1"></p>
+               Participant 2: 
+               <p id="data2"></p>
+               Participant 3: 
+               <p id="data3"></p>
+               Participant 4: 
+               <p id="data4"></p>
+            </center>
+            <br/>
+            </form>
+            </p>
+            <p>
+               <a href='' class='close2'>Close</a>
+            </p>
+         </div>
+      </div>
+      <div class='popup'>
+         <!--Output Participant Info-->
+         <div class='cnt223'>
+            <h1 align="center">Enter Participant Information</h1>
+            <p>
+            <form name="part_info_input" id="part_info_input">
+               <center>
+                  <!-- Writer: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="part1" id="part1"><br/>
+                     Participant 1: <input type="text" name="part2" id="part2" style=""><br/>
+                     Participant 2: <input type="text" name="part3" id="part3"><br/>
+                     Participant 3: <input type="text" name="part4" id="part4"><br/>
+                     Participant 4: <input type="text" name="part5" id="part5"><br/>-->
+                  <div class="text-input">
+                     <input type="text" id="input1" name="mem1" placeholder="&nbsp;&nbsp;&nbsp;Enter Details">
+                     <label for="input1">Point to Discuss</label>
+                  </div>
+                  <div class="text-input">
+                     <input type="text" id="part1" name="mem2" placeholder="Who are the other people in the meeting?">
+                     <label for="input1">Participant 1</label>
+                  </div>
+                  <div class="text-input">
+                     <input type="text" id="part2" name="mem3" placeholder="Who are the other people in the meeting?">
+                     <label for="input1">Participant 2</label>
+                  </div>
+                  <div class="text-input">
+                     <input type="text" id="part3" name="mem4" placeholder="Who are the other people in the meeting?">
+                     <label for="input1">Participant 3</label>
+                  </div>
+                  <div class="text-input">
+                     <input type="text" id="part4" name="mem5" placeholder="Who are the other people in the meeting?">
+                     <label for="input1">Participant 4</label>
+                  </div>
+               </center>
+               <br/>
+            </form>
+            </p>
+            <p>
+               <a href='' class='close' onclick="inputcnf()">Submit</a>
+            </p>
+         </div>
+      </div>
+      <br>
+      <!-- partial:index.partial.html -->
+      <div class="outerbg">
+         <div class="chat-container">
+            <div class="chat-sender img">
+               <strong>
+                  <p id="name_preview_1">Name</p>
+               </strong>
+            </div>
+            &nbsp;&nbsp;&nbsp;
+            <div class="chat-sender msg">
+               <strong>
+                  <p id="valueadd1"></p>
+               </strong>
+               <div class="chatmsg" id="chatme">Messages here
+               </div>
+            </div>
+         </div>
+         <div class="chat-container">
+            <div class="chat-respond msg">
+               <div class="flippd">
+                  <strong>
+                     <p id="valueadd2"></p>
+                  </strong>
+                  <div class="chatmsg" id="chatme2">Message Here
+                  </div>
+               </div>
+            </div>
+            <div class="chat-respond img">
+               <strong>
+                  <p id="name_preview_2">Name</p>
+               </strong>
+            </div>
+         </div>
+         <div class="chat-container">
+            <div class="chat-sender img">
+               <strong>
+                  <p id="name_preview_3">Name</p>
+               </strong>
+            </div>
+            &nbsp;&nbsp;&nbsp;
+            <div class="chat-sender msg">
+               <strong>
+                  <p id="valueadd3"></p>
+               </strong>
+               <div class="chatmsg" id="chatme3">Messages here
+               </div>
+            </div>
+         </div>
+         <div class="chat-container">
+            <div class="chat-respond msg">
+               <div class="flippd">
+                  <strong>
+                     <p id="valueadd4"></p>
+                  </strong>
+                  <div class="chatmsg" id="chatme4">Message Here    </div>
+               </div>
+            </div>
+            <div class="chat-respond img">
+               <strong>
+                  <p id="name_preview_4">Name</p>
+               </strong>
+            </div>
+         </div>
+         <!-- partial -->
+         <form name="submitter" type="post">
+           <center> <div class="custom-select" style="width:200px;">Conversation Made by: 
+                <select id="input2" style="background-color:gainsboro;">
+                   <option id="nameselect1" value="par1"></option>
+                   <option id="nameselect2" value="par2"></option>
+                   <option id="nameselect3" value="par3"></option>
+                   <option id="nameselect4" value="par4"></option>
+                </select>
+             </div></center>
+            <input class="textarea" type="text" name="message" id="input" placeholder="Type here!">
+            <input type="button" id="button2" class="button2" value="Download File"  onclick="download(filesave,'filesave.html','text/plan;charset=utf-8');">
+            <input type="button" id="button" class="button" value="Note it!"  onclick="runmss()" onclick="update_file_data()" >
+      </div>
+      </form>
+   </body>
+</html>
