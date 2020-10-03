@@ -36,7 +36,7 @@ The document is used to make minutes of meetings by inputting data accordingly
    &nbsp;&nbsp;&nbsp;Dynamically insert div and assign values<br> 
    &nbsp;&nbsp;&nbsp;Pop Up<br>
    &nbsp;&nbsp;&nbsp;Export filesave data and start download<br>
-   &nbsp;&nbsp;&nbsp;Backup Restore<br><br>
+   &nbsp;&nbsp;&nbsp;Restore backed up data from Local Storage<br><br>
 <u>Body</u><br>
 <br><hr><b>About Me</b><hr>
 I'm a self-taught Web developer. I am planning to include automatic scrolling down and some more bug fixes to this website. I am also planning to improve the <option> tag using css.
