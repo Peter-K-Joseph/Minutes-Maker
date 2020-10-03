@@ -29,13 +29,14 @@ The document is used to make minutes of meetings by inputting data accordingly
    &nbsp;&nbsp;&nbsp;filesave initialization<br>
    &nbsp;&nbsp;&nbsp;Responsible for storing names of the participants and printing it on first chat (Variable Initialisation and value assignment)<br>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Var Assign<br>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign var to web elements<br>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign var to option tag<br>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assign var to option tag id<br>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filesave update<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get System Time ⌚ <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initialize Page and start Auto Backup Scripts<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit after Adding Minutes text<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update Filesave<br>
    &nbsp;&nbsp;&nbsp;Dynamically insert div and assign values<br> 
    &nbsp;&nbsp;&nbsp;Pop Up<br>
-   &nbsp;&nbsp;&nbsp;Download Content/Minutes as .html<br><br>
+   &nbsp;&nbsp;&nbsp;Export filesave data and start download<br>
+   &nbsp;&nbsp;&nbsp;Backup Restore<br><br>
 <u>Body</u><br>
 <br><hr><b>About Me</b><hr>
 I'm a self-taught Web developer. I am planning to include automatic scrolling down and some more bug fixes to this website. I am also planning to improve the <option> tag using css.
