@@ -23,17 +23,17 @@ setInterval(function() {
 
 ///////////////////////From Modal Main to System Main///////////////////////////
 function init(){
-   document.mains.mem2.value = "";
-   document.mains.mem1.value = "";
+   document.getElementById("input1").value = "";
+   document.getElementById("input2").value = "";
 }
 
 function push_data() {                    
-   var a = document.mains.mem1.value;
+   var a = document.getElementById("input1").value;
    document.getElementById("input1").innerHTML = a;
    document.getElementById("name").innerHTML = "Meeting Topic is <i>" + a + "</i> which is happening on <i>" + date + "</i>";
    temp = a;
    localStorage.setItem("Topic", a);
-   localStorage.setItem("Orgnizer", document.mains.mem2.value);
+   localStorage.setItem("Orgnizer", document.getElementById("input2").value);
    checkercontent();
     setInterval(function() {
       checkercontent()
@@ -92,7 +92,7 @@ function make(){
    }
    document.getElementById("input").value = "";
    filesave = "";
-   filesave = "<h2 align='center'>Minutes<br>Meeting Title: " + document.mains.mem1.value + "<br>Organisation Name: " + document.mains.mem2.value + "</h2><h4><br>Meeting Date: " + date + "<br>Meeting Time: " + tms + "</h4><hr>";
+   filesave = "<h2 align='center'>Minutes<br>Meeting Title: " + document.getElementById("input1").value + "<br>Organisation Name: " + document.getElementById("input2").value + "</h2><h4><br>Meeting Date: " + date + "<br>Meeting Time: " + tms + "</h4><hr>";
    for (var i = 1; i < x; i++){
       filesave = filesave + "<br><p><b>" + document.getElementById("tmr" + i).innerHTML +"</b><i>: " + document.getElementById("note" + i).innerHTML + "</i></p>";
       localStorage.setItem("minute"+i , document.getElementById("note" + i).innerHTML);
@@ -104,7 +104,7 @@ function make(){
 function update(){
    document.getElementById("note" + local).innerHTML = document.getElementById("input3").value;
    filesave = "";
-   filesave = "<h2 align='center'>Minutes<br>Meeting Title: " + document.mains.mem1.value + "<br>Organisation Name: " + document.mains.mem2.value + "</h2><h4><br>Meeting Date: " + date + "<br>Meeting Time: " + tms + "</h4><hr>";
+   filesave = "<h2 align='center'>Minutes<br>Meeting Title: " + document.getElementById("input1").value + "<br>Organisation Name: " + document.getElementById("input2").value + "</h2><h4><br>Meeting Date: " + date + "<br>Meeting Time: " + tms + "</h4><hr>";
    for (var i = 1; i < x; i++){
       filesave = filesave + "<br><p><b>" + document.getElementById("tmr" + i).innerHTML +"</b><i>: " + document.getElementById("note" + i).innerHTML + "</i></p>";
    }
@@ -115,7 +115,7 @@ function update(){
 ///////////////////////Pre Initialisation and Downloading//////////////////////////
 function init_bef_dwn(){
    filesave = "";
-   filesave = "<h2 align='center'>Minutes<br>Meeting Title: " + document.mains.mem1.value + "<br>Organisation Name: " + document.mains.mem2.value + "</h2><h4><br>Meeting Date: " + date + "<br>Meeting Time: " + tms + "</h4><hr>";
+   filesave = "<h2 align='center'>Minutes<br>Meeting Title: " + document.getElementById("input1").value + "<br>Organisation Name: " + document.getElementById("input2").value + "</h2><h4><br>Meeting Date: " + date + "<br>Meeting Time: " + tms + "</h4><hr>";
    for (var i = 1; i < x; i++){
       filesave = filesave + "<br><p><b>" + document.getElementById("tmr" + i).innerHTML +"</b><i>: " + document.getElementById("note" + i).innerHTML + "</i></p>";
    }
@@ -160,8 +160,8 @@ function loadSave(){
    }
    else{
       alert("Minutes Imported from a previous backup");
-      document.mains.mem2.value = localStorage.getItem("Orgnizer");
-      document.mains.mem1.value = localStorage.getItem("Topic");
+      document.getElementById("input2").value = localStorage.getItem("Orgnizer");
+      document.getElementById("input1").value = localStorage.getItem("Topic");
       for (i=1;i<x;i++){
          if (i % 2 == 1){
             $(document).ready(function() {
