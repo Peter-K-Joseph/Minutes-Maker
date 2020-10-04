@@ -74,10 +74,10 @@ $(function(){
       $('.popup').hide();
       overlay.appendTo(document.body).remove();
       return false;
-   });
-});
+   }); 
+}); 
 
-//////////System Main Value Input and Auto Sve to browser Local Storage//////////
+/////////System Main Value Input and Auto Sve to browser Local Storage//////////
 function make(){
    localStorage.setItem("datavalue", x)
    if (x % 2 == 1){
