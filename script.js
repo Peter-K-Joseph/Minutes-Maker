@@ -57,7 +57,7 @@ function edit(xamp){
       $('.popup2').hide();
       overlay.appendTo(document.body).remove();
       return false;
-   });
+   }); 
 }
 
 $(function(){
