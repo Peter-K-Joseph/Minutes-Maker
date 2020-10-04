@@ -1,5 +1,5 @@
 # minutesaver
-<i>Write and save Minutes of Meetings and download it as an html document</i>
+<i>Write and save Minutes of Meetings and download it as an html document. Includes Local Save Feature</i>
 
 
 <b>LICENCE</b><hr>
