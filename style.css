@@ -17,7 +17,23 @@ body{
          
          @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-         .buttoncd{
+         .close{
+            font-weight:bold; 
+            border-radius: 7px; 
+            background-color: inherit; 
+            color:#d91900;
+            cursor: pointer;
+         }
+         
+         .close2{
+            font-weight:bold; 
+            border-radius: 7px; 
+            background-color: inherit; 
+            color:#d91900;
+            cursor: pointer;
+         }
+
+         .buttonact{
             font-weight:bold; 
             border-radius: 7px; 
             background-color: inherit; 

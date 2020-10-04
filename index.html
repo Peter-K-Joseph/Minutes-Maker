@@ -32,9 +32,9 @@
                </center> 
             </p><br>
                <center>
-                  <p><button class="buttoncd" class='close' onclick="localStorage.setItem('internal','valid');push_data()">Submit</button>
-                  <br><br><button onclick="loadSave()" class="buttoncd">Load Previous Data</button>&nbsp;&nbsp;&nbsp;
-                  <button onclick="window.localStorage.clear();localStorage.setItem('internal', 'clear');" class="buttoncd">Delete Previous Data</button></p>
+                  <p><button class='close' onclick="localStorage.setItem('internal','valid');push_data()">Submit</button>
+                  <br><br><button onclick="loadSave()" class="buttonact">Load Previous Data</button>&nbsp;&nbsp;&nbsp;
+                  <button onclick="window.localStorage.clear();localStorage.setItem('internal', 'clear');" class="buttonact">Delete Previous Data</button></p>
                </center> 
          </div> 
       </div><br>
@@ -44,14 +44,14 @@
             <p>Previous Note: </p>&nbsp;&nbsp;&nbsp;&nbsp;<p id="old_data" style="font-size: small;"></p><p>
                <center>
                   <div class="text-input">
-                     <input type="text" onchange="cument.getElementById('close').click()" id="input3" name="mem3" placeholder="&nbsp;&nbsp;&nbsp;Re enter the Minutes Note">
+                     <input type="text" onchange="document.getElementById('close').click()" id="input3" name="mem3" placeholder="&nbsp;&nbsp;&nbsp;Re enter the Minutes Note">
                      <label for="input3">Edit Minutes</label>
                   </div>
                </center>
             </p><br>
                <center>
-                  <p><button class="buttoncd" class='close2' onclick="update()";>Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <button class="buttoncd" class='close2'>Close</button></p>
+                  <p><button class='close2' onclick="update()";>Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <button  class='close2'>Close</button></p>
                </center> 
          </div>
       </div>
