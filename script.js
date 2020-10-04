@@ -1,4 +1,4 @@
-var filesave,temp,tms,date,x = 1,xamp, local;
+var filesave,temp,tms,date,x = 1,xamp, local; 
 
 //////////////////////////Time/////////////////////////////
 function Time(){
@@ -91,7 +91,7 @@ function make(){
       x = x + 1;
    }
    document.getElementById("input").value = "";
-   filesave = "";
+   filesave = ""; 
    filesave = "<h2 align='center'>Minutes<br>Meeting Title: " + document.getElementById("input1").value + "<br>Organisation Name: " + document.getElementById("input2").value + "</h2><h4><br>Meeting Date: " + date + "<br>Meeting Time: " + tms + "</h4><hr>";
    for (var i = 1; i < x; i++){
       filesave = filesave + "<br><p><b>" + document.getElementById("tmr" + i).innerHTML +"</b><i>: " + document.getElementById("note" + i).innerHTML + "</i></p>";
