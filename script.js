@@ -22,6 +22,10 @@ setInterval(function() {
 }, 1000);
 
 ///////////////////////From Modal Main to System Main///////////////////////////
+function init(){
+   document.getElementById("input1").value = "";
+   document.getElementById("input2").value = "";
+}
 
 function push_data() {                    
    var a = document.getElementById("input1").value;
