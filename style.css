@@ -17,6 +17,14 @@ body{
          
          @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
+         .buttoncd{
+            font-weight:bold; 
+            border-radius: 7px; 
+            background-color: inherit; 
+            color:#d91900;
+            cursor: pointer;
+         }
+
          .outerbg {
          width: 100%;
          max-width: 800px;
