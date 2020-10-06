@@ -1,4 +1,4 @@
-var filesave,temp,tms,date,x = 1,xamp, local; 
+var filesave,temp,tms,date,x = 1,xamp, local, start_tme; 
 
 //////////////////////////Time/////////////////////////////
 function Time(){
@@ -14,7 +14,8 @@ function Time(){
    tms = currentTime + " " + amps;
    var dow = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], month = ["January","February","March","April","May","June","July","August","September","October","November","December"],day = dateInfo.getDate();
    date = dow[dateInfo.getDay()] + ", " + month[dateInfo.getMonth()] + " " + day;
-   }
+   start_tme = tms;   
+}
 
 Time();
 setInterval(function() {
@@ -92,7 +93,7 @@ function make(){
    }
    document.getElementById("input").value = "";
    filesave = ""; 
-   filesave = "<h2 align='center'>Minutes<br>Meeting Title: " + document.getElementById("input1").value + "<br>Organisation Name: " + document.getElementById("input2").value + "</h2><h4><br>Meeting Date: " + date + "<br>Meeting Time: " + tms + "</h4><hr>";
+   filesave = "<h2 align='center'>Minutes<br>Meeting Title: " + document.getElementById("input1").value + "<br>Organisation Name: " + document.getElementById("input2").value + "</h2><h4><br>Meeting Date: " + date + "<br>Meeting Start Time: " + start_tme +"Meeting End Time: " + tms + "</h4><hr>";
    for (var i = 1; i < x; i++){
       filesave = filesave + "<br><p><b>" + document.getElementById("tmr" + i).innerHTML +"</b><i>: " + document.getElementById("note" + i).innerHTML + "</i></p>";
       localStorage.setItem("minute"+i , document.getElementById("note" + i).innerHTML);
